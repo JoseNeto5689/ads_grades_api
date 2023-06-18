@@ -1,8 +1,12 @@
 import app from "./config"
+import dotenv from "dotenv"
 
-app.listen(3000, () => {
+dotenv.config()
+const port = process.env.PORT ? parseInt(process.env.PORT) : 3000
+
+app.listen(port, () => {
     console.table({
         Status: "Working",
-        Port: 3000
+        Port: port
     })
 })
