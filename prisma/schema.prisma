@@ -18,8 +18,7 @@ model Period {
 
 model Grade {
   id          Int     @id @default(autoincrement())
-  name        String
-  description String
+  description Json
   Period      Period  @relation(fields: [periodId], references: [id])
   periodId    Int
   Teacher     Teacher @relation(fields: [teacherId], references: [id])
