@@ -1,9 +1,16 @@
 import { Router, Request, Response } from 'express';
+import { CreateTeacherController } from '../controllers/CreateTeacher';
+import { CreateGradeController } from '../controllers/CreateGrade';
 
-const route: Router = Router()
+const router: Router = Router()
+const createTeacher = new CreateTeacherController()
+const createGrade = new CreateGradeController()
 
-route.get('/', (req: Request, res: Response) => {
-    res.send("Olá Mundo")
+router.get('/', (req: Request, res: Response) => {
+    res.send("Server working")
 })
 
-export {route};
+router.post("/teacher", createTeacher.handle)
+router.post("/grade", createGrade.handle)
+
+export { router };
