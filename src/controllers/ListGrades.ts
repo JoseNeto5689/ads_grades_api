@@ -7,8 +7,8 @@ export class ListGradesController {
             const grades = await prismaClient.grade.findMany()
             return response.json(grades)
         }
-        catch {
-            response.status(400).send("Error")
+        catch (error) {
+            return response.status(400).json({ status: "error", error })
         }
     }
 }
