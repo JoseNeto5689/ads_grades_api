@@ -7,6 +7,7 @@ import { ListTeachersController } from '../controllers/ListTeachers';
 import { ListGradesController } from '../controllers/ListGrades';
 
 const router: Router = Router()
+
 const createTeacher = new CreateTeacherController()
 const createGrade = new CreateGradeController()
 const findGrade = new FindGradeController()

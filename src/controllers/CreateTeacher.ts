@@ -1,9 +1,13 @@
 import { Request, Response } from "express";
 import prismaClient from "../database";
 
+type ITeacher = {
+    name: string
+}
+
 export class CreateTeacherController {
     async handle(request: Request, response: Response) {
-        const { name } = request.body;
+        const { name } = <ITeacher>request.body;
         try {
             await prismaClient.teacher.create({
                 data: {
@@ -15,9 +19,6 @@ export class CreateTeacherController {
         catch (error) {
             return response.status(400).json({ status: "error", error })
         }
-
-
-
     }
 }
 
