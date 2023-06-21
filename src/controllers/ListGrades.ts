@@ -4,7 +4,11 @@ import prismaClient from "../database";
 export class ListGradesController {
     async handle(request: Request, response: Response) {
         try {
-            const grades = await prismaClient.grade.findMany()
+            const grades = await prismaClient.grade.findMany({
+                include: {
+                    Teacher: true
+                }
+            })
             return response.json(grades)
         }
         catch (error) {

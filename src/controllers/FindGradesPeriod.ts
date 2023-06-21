@@ -9,6 +9,9 @@ export class FindGradePeriodController {
                 where: {
                     periodId: parseInt(id)
                 },
+                include: {
+                    Teacher: true
+                }
             })
             return response.json(grades)
         }
