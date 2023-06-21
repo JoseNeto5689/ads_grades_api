@@ -6,11 +6,13 @@ export class FindGradeController {
         const { id } = request.params;
         try {
             const grade = await prismaClient.grade.findFirst({
-                where: {
-                    id: parseInt(id)
-                },
-                include: {
+                select: {
+                    description: true,
+                    periodId: true,
                     Teacher: true
+                },
+                where: {
+                    id: parseInt(id),
                 }
             })
             return response.json(grade)

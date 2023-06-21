@@ -5,9 +5,11 @@ export class ListGradesController {
     async handle(request: Request, response: Response) {
         try {
             const grades = await prismaClient.grade.findMany({
-                include: {
+                select: {
+                    description: true,
+                    periodId: true,
                     Teacher: true
-                }
+                },
             })
             return response.json(grades)
         }
