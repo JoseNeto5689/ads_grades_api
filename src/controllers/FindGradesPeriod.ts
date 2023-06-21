@@ -8,9 +8,6 @@ export class FindGradePeriodController {
             const grades = await prismaClient.grade.findMany({
                 where: {
                     periodId: parseInt(id)
-                },
-                include: {
-                    Teacher: true
                 }
             })
             return response.json(grades)
